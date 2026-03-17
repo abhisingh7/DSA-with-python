@@ -48,7 +48,7 @@ def containsDuplicateY(nums: List[int]) -> bool:
 # Using set
 
 def containsDuplicateZ(nums: List[int]) -> bool:
-    seen = set(nums)
+    seen = set()
     
     # if len(seen) != len(nums):
     #     return True
