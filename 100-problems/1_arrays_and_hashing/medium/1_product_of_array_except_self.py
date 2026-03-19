@@ -1,4 +1,4 @@
-# Leetcode Problem 4: Intersection of two arrays
+# Leetcode Problem 5: Product of array except self
 # Link - https://leetcode.com/problems/product-of-array-except-self/description/
 
 from typing import List
