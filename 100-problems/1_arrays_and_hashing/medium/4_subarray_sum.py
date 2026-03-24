@@ -4,6 +4,7 @@
 # How many subarrays sum equals to k
 
 # we are using - prefix sum technique with dict(or hashmap)
+# bcoz two pointer works only for sorted array and sliding window won't work for negative numbers.
 # prefix[right + 1] - prefix[left] == k
 # Just like algebra — if a - b = k, then b = a-k
 # So, prefix[left] = prefix[right+1] - k
@@ -13,17 +14,17 @@
 def subarray_sum(nums, k):
     # return the count of subarrays that sum to k
     seen = {0:1} # Key = Prefix Sum Value, Value = Count of prefix sum value
-    current_sum = 0
-    result = 0
+    prefix = 0
+    count = 0
     
     for num in nums:
-        current_sum += num
-        if (current_sum-k) in seen:
-            result += seen[current_sum-k]
+        prefix += num
+        if (prefix-k) in seen:
+            count += seen[prefix-k]
 
-        seen[current_sum] = seen.get(current_sum,0) + 1
+        seen[prefix] = seen.get(prefix,0) + 1
         
-    return result
+    return count
     
 
 nums = [1, 2, 3, 1, 2]
