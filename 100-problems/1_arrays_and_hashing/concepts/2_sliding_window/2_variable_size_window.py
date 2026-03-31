@@ -2,7 +2,7 @@
 Problem - Find the length of longest substring without repeating characters.
 s = "abcabc"
 """
-# TC - O(n)
+# TC - O(n), SC - O(k)
 def longest_unique_substring(s):
     seen = {}  # char -> index
     slow = 0

@@ -16,6 +16,8 @@
 # Output: [["a"]]
 
 from typing import List
+from collections import defaultdict
+
 
 # 1. Brute Force - TC - O(n^2), SC - O(n)
 def groupAnagram(strs: List[str]) -> List[List[str]]:
@@ -56,6 +58,16 @@ def groupAnagramX(strs: List[str]) -> List[List[str]]:
     
     return list(anagram_map.values())
 
+# Same solution Using default dict
+# TC - O(n · k log k), SC - O(n · k)
+def groupAnagramY(strs):
+    anagram_map = defaultdict(list)
+    
+    for word in strs:
+        sorted_word = ''.join(sorted(word))
+        anagram_map[sorted_word].append(word)
+    return list(anagram_map.values())
+
 # 3. Most Optimized(Dict + char count)
 # TC - O(n*k) - Count characters in O(k) instead of sorting in O(k log k)
 def groupAnagramOptimized(strs: List[str]) -> List[List[str]]:
@@ -76,6 +88,18 @@ def groupAnagramOptimized(strs: List[str]) -> List[List[str]]:
 
     return list(anagram_map.values())
 
+# Same Solution using default dict
+def groupAnagramOptimizedX(strs):
+    anagram_map = defaultdict(list)
+    
+    for word in strs:
+        count = [0] * 26
+        for c in word:
+            count[ord(c) - ord('a')] += 1
+        anagram_map[tuple(count)].append(word)
+    
+    return list(anagram_map.values())
+
 strs = ["eat","tea","tan","ate","nat","bat"]
-# print(groupAnagramX(strs))
-print(groupAnagramOptimized(strs))
+print(groupAnagramY(strs))
+# print(groupAnagramOptimized(strs))
