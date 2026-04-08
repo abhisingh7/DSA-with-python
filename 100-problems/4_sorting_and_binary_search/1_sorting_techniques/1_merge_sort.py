@@ -32,7 +32,6 @@ def merge_sort(arr):
     right = merge_sort(arr[mid:])   # recursively sort right half
 
     # MERGE: combine two sorted halves into one sorted array
-    print(f"left-{left}, right-{right}")
     return merge(left, right)
 
 

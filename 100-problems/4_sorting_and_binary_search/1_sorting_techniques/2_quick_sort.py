@@ -16,7 +16,11 @@ def quick_sort(arr, low, high):
         quick_sort(arr, low, pi - 1)   # sort left of pivot
         quick_sort(arr, pi + 1, high)  # sort right of pivot
 
-
+# This solution is based on Lomuto Partition because of fixed pivot (arr[high])
+# which can lead to O(n^2) TC for sorted array.
+# Worst case:
+# 	•	Recursion depth = O(n)
+# 	•	Can cause stack overflow for large inputs
 def partition(arr, low, high):
     pivot = arr[high]  # always pick last element as pivot
     i = low - 1        # i tracks the boundary of "smaller than pivot" zone
